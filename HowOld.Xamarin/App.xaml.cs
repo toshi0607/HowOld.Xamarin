@@ -8,7 +8,7 @@ namespace HowOld.Xamarin
         {
             InitializeComponent();
 
-            MainPage = new HowOld_XamarinPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
