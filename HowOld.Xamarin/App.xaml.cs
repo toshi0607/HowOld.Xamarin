@@ -8,6 +8,8 @@ namespace HowOld.Xamarin
         {
             InitializeComponent();
 
+            Plugin.Media.CrossMedia.Current.Initialize();
+
             MainPage = new MainPage();
         }
 

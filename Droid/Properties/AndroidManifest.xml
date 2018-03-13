@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.toshi0607.HowOld_Xamarin">
-    <uses-sdk android:minSdkVersion="15" />
-    <application android:label="HowOld.Xamarin">
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.BROADCAST_SMS" />
+	<application android:label="HowOld.Xamarin">
+        <provider android:name="android.support.v4.content.FileProvider" 
+          android:authorities="com.toshi0607.HowOld_Xamarin.fileprovider" 
+          android:exported="false" 
+          android:grantUriPermissions="true">
+          
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" 
+                     android:resource="@xml/file_paths"></meta-data>
+</provider>
     </application>
 </manifest>

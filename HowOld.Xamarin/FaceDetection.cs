@@ -1,6 +1,7 @@
-﻿namespace HowOld.Xamarin
+﻿using System;
+namespace HowOld.Xamarin
 {
-    public class FaceEmotionDetection
+    public class FaceDetection
     {
         public string Emotion { get; set; }
         public double Smile { get; set; }
