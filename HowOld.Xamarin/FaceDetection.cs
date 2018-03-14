@@ -1,5 +1,4 @@
-﻿using System;
-namespace HowOld.Xamarin
+﻿namespace HowOld.Xamarin
 {
     public class FaceDetection
     {

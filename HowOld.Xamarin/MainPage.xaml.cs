@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
 using Plugin.Connectivity;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
-
 using Xamarin.Forms;
 
 namespace HowOld.Xamarin
 {
     public partial class MainPage : ContentPage
     {
-        private readonly IFaceServiceClient faceServiceClient;
+        private readonly IFaceServiceClient _faceServiceClient;
 
         public MainPage()
         {
             InitializeComponent();
-            this.faceServiceClient = new FaceServiceClient(Variables.FACE_API_KEY, "https://eastasia.api.cognitive.microsoft.com/face/v1.0");
+            _faceServiceClient = new FaceServiceClient(Variables.FACE_API_KEY, "https://eastasia.api.cognitive.microsoft.com/face/v1.0");
         }
 
         private async void UploadPictureButton_Clicked(object sender, EventArgs e)
@@ -32,16 +29,16 @@ namespace HowOld.Xamarin
             var file = await CrossMedia.Current.PickPhotoAsync();
             if (file == null)
                 return;
-            this.Indicator1.IsVisible = true;
-            this.Indicator1.IsRunning = true;
+            Indicator1.IsVisible = true;
+            Indicator1.IsRunning = true;
             Image1.Source = ImageSource.FromStream(() => file.GetStream());
-            this.Indicator1.IsRunning = false;
-            this.Indicator1.IsVisible = false;
+            Indicator1.IsRunning = false;
+            Indicator1.IsVisible = false;
 
             FaceDetection theData = await DetectFaceAsync(file);
-            this.BindingContext = theData;
-            this.Indicator1.IsRunning = false;
-            this.Indicator1.IsVisible = false;
+            BindingContext = theData;
+            Indicator1.IsRunning = false;
+            Indicator1.IsVisible = false;
         }
 
         private async void TakePictureButton_Clicked(object sender, EventArgs e)
@@ -60,16 +57,16 @@ namespace HowOld.Xamarin
             });
             if (file == null)
                 return;
-            this.Indicator1.IsVisible = true;
-            this.Indicator1.IsRunning = true;
+            Indicator1.IsVisible = true;
+            Indicator1.IsRunning = true;
             Image1.Source = ImageSource.FromStream(() => file.GetStream());
-            this.Indicator1.IsRunning = false;
-            this.Indicator1.IsVisible = false;
+            Indicator1.IsRunning = false;
+            Indicator1.IsVisible = false;
 
             FaceDetection theData = await DetectFaceAsync(file);
-            this.BindingContext = theData;
-            this.Indicator1.IsRunning = false;
-            this.Indicator1.IsVisible = false;
+            BindingContext = theData;
+            Indicator1.IsRunning = false;
+            Indicator1.IsVisible = false;
         }
 
         private async Task<FaceDetection> DetectFaceAsync(MediaFile inputFile)
@@ -83,14 +80,14 @@ namespace HowOld.Xamarin
 
             try
             {
-                var faces = await faceServiceClient.DetectAsync(inputFile.GetStream(), false, false, (FaceAttributeType[])Enum.GetValues(typeof(FaceAttributeType)));
+                var faces = await _faceServiceClient.DetectAsync(inputFile.GetStream(), false, false, (FaceAttributeType[])Enum.GetValues(typeof(FaceAttributeType)));
 
                 if (faces.Length == 0) {
                     throw new Exception("顔を認識できませんでした。別の写真を試してください。");
                 }
 
                 var faceAttributes = faces[0]?.FaceAttributes;
-                FaceDetection faceDetection = new FaceDetection();
+                var faceDetection = new FaceDetection();
                 faceDetection.Age = faceAttributes.Age;
                 faceDetection.Emotion = faceAttributes.Emotion.ToRankedList().FirstOrDefault().Key;
                 faceDetection.Glasses = faceAttributes.Glasses.ToString();

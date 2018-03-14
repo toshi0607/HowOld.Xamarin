@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Plugin.Media;
+using Xamarin.Forms;
 
 namespace HowOld.Xamarin
 {
@@ -8,7 +9,7 @@ namespace HowOld.Xamarin
         {
             InitializeComponent();
 
-            Plugin.Media.CrossMedia.Current.Initialize();
+            CrossMedia.Current.Initialize();
 
             MainPage = new MainPage();
         }
