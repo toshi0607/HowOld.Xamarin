@@ -74,6 +74,13 @@ namespace HowOld.Xamarin
 
         private async Task<FaceDetection> DetectFaceAsync(MediaFile inputFile)
         {
+
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                await DisplayAlert("ネットワークエラー", "ネット接続を確認してからリトライしてください。", "OK");
+                return null;
+            }
+
             try
             {
                 var faces = await faceServiceClient.DetectAsync(inputFile.GetStream(), false, false, (FaceAttributeType[])Enum.GetValues(typeof(FaceAttributeType)));
