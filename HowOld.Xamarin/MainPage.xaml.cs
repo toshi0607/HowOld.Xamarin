@@ -85,6 +85,10 @@ namespace HowOld.Xamarin
             {
                 var faces = await faceServiceClient.DetectAsync(inputFile.GetStream(), false, false, (FaceAttributeType[])Enum.GetValues(typeof(FaceAttributeType)));
 
+                if (faces.Length == 0) {
+                    throw new Exception("顔を認識できませんでした。別の写真を試してください。");
+                }
+
                 var faceAttributes = faces[0]?.FaceAttributes;
                 FaceDetection faceDetection = new FaceDetection();
                 faceDetection.Age = faceAttributes.Age;
