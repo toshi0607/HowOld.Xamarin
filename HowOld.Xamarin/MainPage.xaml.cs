@@ -29,16 +29,12 @@ namespace HowOld.Xamarin
             var file = await CrossMedia.Current.PickPhotoAsync();
             if (file == null)
                 return;
-            Indicator1.IsVisible = true;
             Indicator1.IsRunning = true;
             Image1.Source = ImageSource.FromStream(() => file.GetStream());
-            Indicator1.IsRunning = false;
-            Indicator1.IsVisible = false;
 
             FaceDetection theData = await DetectFaceAsync(file);
             BindingContext = theData;
             Indicator1.IsRunning = false;
-            Indicator1.IsVisible = false;
         }
 
         private async void TakePictureButton_Clicked(object sender, EventArgs e)
@@ -57,16 +53,12 @@ namespace HowOld.Xamarin
             });
             if (file == null)
                 return;
-            Indicator1.IsVisible = true;
             Indicator1.IsRunning = true;
             Image1.Source = ImageSource.FromStream(() => file.GetStream());
-            Indicator1.IsRunning = false;
-            Indicator1.IsVisible = false;
 
             FaceDetection theData = await DetectFaceAsync(file);
             BindingContext = theData;
             Indicator1.IsRunning = false;
-            Indicator1.IsVisible = false;
         }
 
         private async Task<FaceDetection> DetectFaceAsync(MediaFile inputFile)
