@@ -5,8 +5,45 @@
   xmlns:conv="clr-namespace:HowOld.Xamarin. 
     Converters;assembly=FaceEmotionRecognition"
     x:Class="HowOld.Xamarin.MainPage">
-  <StackLayout Orientation="Vertical">
-    <Grid>
+  <StackLayout>
+    <StackLayout>
+      <Image x:Name="Image1" HeightRequest="240" />  
+      <ActivityIndicator x:Name="Indicator1" HeightRequest="20" IsRunning="False" />
+    </StackLayout>
+    <StackLayout VerticalOptions="EndAndExpand">
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="性別: "/>
+        <Label x:Name="GenderLabel" Text="{Binding Path=Gender}" />
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="年齢: "/>
+        <Label x:Name="AgeLabel" Text="{Binding Path=Age}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="感情: "/>
+        <Label x:Name="EmotionLabel" Text="{Binding Path=Emotion}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="笑顔: "/>
+        <Label x:Name="SmileLabel"
+               Text="{Binding Path=Smile}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="眼鏡: "/>
+        <Label x:Name="GlassesLabel" Text="{Binding Path=Glasses}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="ひげ: "/>
+        <Label x:Name="BeardLabel"
+               Text="{Binding Path=Beard}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal" Padding="3">
+        <Label Text="口ひげ: "/>
+        <Label x:Name="MoustacheLabel"
+               Text="{Binding Path=Moustache}"/>
+      </StackLayout>
+    </StackLayout>
+    <Grid VerticalOptions="EndAndExpand">
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
         <ColumnDefinition />        
@@ -14,46 +51,5 @@
       <Button x:Name="TakePictureButton" Grid.Column="0" Clicked="TakePictureButton_Clicked" Text="Take from camera"/>
       <Button x:Name="UploadPictureButton" Grid.Column="1" Clicked="UploadPictureButton_Clicked" Text="Pick a photo"/>  
     </Grid>
-    <StackLayout Orientation="Horizontal">
-      </StackLayout>
-    <StackLayout>
-      <ActivityIndicator x:Name="Indicator1" HeightRequest="20" IsRunning="False" />
-      <Image x:Name="Image1" HeightRequest="240" />  
-    </StackLayout>
-    <ScrollView>
-      <StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="性別: "/>
-          <Label x:Name="GenderLabel" Text="{Binding Path=Gender}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="年齢: "/>
-          <Label x:Name="AgeLabel" Text="{Binding Path=Age}"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="感情: "/>
-          <Label x:Name="EmotionLabel" Text="{Binding Path=Emotion}"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="笑顔: "/>
-          <Label x:Name="SmileLabel"
-                 Text="{Binding Path=Smile}"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="眼鏡: "/>
-          <Label x:Name="GlassesLabel" Text="{Binding Path=Glasses}"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="ひげ: "/>
-          <Label x:Name="BeardLabel"
-                 Text="{Binding Path=Beard}"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="3">
-          <Label Text="口ひげ: "/>
-          <Label x:Name="MoustacheLabel"
-                 Text="{Binding Path=Moustache}"/>
-        </StackLayout>
-      </StackLayout>
-    </ScrollView>
   </StackLayout>
 </ContentPage>
