@@ -6,8 +6,16 @@
     Converters;assembly=FaceEmotionRecognition"
     x:Class="HowOld.Xamarin.MainPage">
   <StackLayout Orientation="Vertical">
-    <Button x:Name="TakePictureButton" Clicked="TakePictureButton_Clicked" Text="Take from camera"/>
-    <Button x:Name="UploadPictureButton" Clicked="UploadPictureButton_Clicked" Text="Pick a photo"/>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />        
+      </Grid.ColumnDefinitions>
+      <Button x:Name="TakePictureButton" Grid.Column="0" Clicked="TakePictureButton_Clicked" Text="Take from camera"/>
+      <Button x:Name="UploadPictureButton" Grid.Column="1" Clicked="UploadPictureButton_Clicked" Text="Pick a photo"/>  
+    </Grid>
+    <StackLayout Orientation="Horizontal">
+      </StackLayout>
     <StackLayout>
       <ActivityIndicator x:Name="Indicator1" HeightRequest="20" IsRunning="False" />
       <Image x:Name="Image1" HeightRequest="240" />  
